@@ -1,0 +1,53 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="stylesheets/style.css" />
+  </head>
+  <body>
+    <div class="container">
+        <!-- Top Section -->
+        <div class="header">
+            <h1>Welcome, {{user.name}}</h1>
+            <button onclick="window.location.href='/logout'" class="logout-btn">Logout</button>
+        </div>
+
+        <!-- Add Expense Form -->
+        <form action="/add-expense" method="POST">
+            <h2>Add Expense</h2>
+            <input
+                type="text"
+                name="description"
+                placeholder="Description"
+                required
+            />
+            <input type="number" name="amount" placeholder="Amount" required />
+            <button type="submit">Add Expense</button>
+        </form>
+
+        <!-- Expense List -->
+        <h2>Your Expenses</h2>
+        <ul>
+            {{#each expenses}}
+            <li>
+                <div>
+                    <strong>{{description}}</strong>
+                    - ${{amount}}
+                    <span>({{date}})</span>
+                </div>
+                <form
+                    action="/delete-expense"
+                    method="POST"
+                    style="margin: 0;"
+                >
+                    <input type="hidden" name="expenseId" value="{{_id}}" />
+                    <button type="submit" class="delete-btn">Delete</button>
+                </form>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Register</title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <!-- Login Form -->
+            <div id="login-form" class="form">
+                <h2>Login</h2>
+                <form action="/login" method="POST">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" name="email" placeholder="Email" required>
+                    
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" name="password" placeholder="Password" required>
+                    
+                    <button type="submit">Login</button>
+                    <p>Don't have an account? <a href="#register-form" onclick="switchToRegister()">Register</a></p>
+                </form>
+            </div>
+
+            <!-- Register Form -->
+            <div id="register-form" class="form hidden">
+                <h2>Register</h2>
+                <form action="/register" method="POST">
+                    <label for="register-name">Full Name</label>
+                    <input type="text" id="register-name" name="name" placeholder="Full Name" required>
+                    
+                    <label for="register-email">Email</label>
+                    <input type="email" id="register-email" name="email" placeholder="Email" required>
+                    
+                    <label for="register-password">Password</label>
+                    <input type="password" id="register-password" name="password" placeholder="Password" required>
+                    
+                    <button type="submit">Register</button>
+                    <p>Already have an account? <a href="#login-form" onclick="switchToLogin()">Login</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for toggling between forms
+        function switchToRegister() {
+            document.getElementById('login-form').classList.add('hidden');
+            document.getElementById('register-form').classList.remove('hidden');
+        }
+
+        function switchToLogin() {
+            document.getElementById('register-form').classList.add('hidden');
+            document.getElementById('login-form').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
